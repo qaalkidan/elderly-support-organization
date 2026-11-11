@@ -12,12 +12,12 @@
           </svg>
         </router-link>
         <div class="dropdown-menu" v-show="activeDropdown === 'services'">
-          <router-link to="/services/healthcare" @click="closeMobileMenu">{{ t('nav.serviceHealthcare') }}</router-link>
-          <router-link to="/services/food" @click="closeMobileMenu">{{ t('nav.serviceFood') }}</router-link>
-          <router-link to="/services/financial" @click="closeMobileMenu">{{ t('nav.serviceFinancial') }}</router-link>
-          <router-link to="/services/social" @click="closeMobileMenu">{{ t('nav.serviceSocial') }}</router-link>
-          <router-link to="/services/home-visits" @click="closeMobileMenu">{{ t('nav.serviceHomeVisits') }}</router-link>
-          <router-link to="/services/other" @click="closeMobileMenu">{{ t('nav.serviceOther') }}</router-link>
+          <router-link to="/services/healthcare" @click="handleDropdownSelect">{{ t('nav.serviceHealthcare') }}</router-link>
+          <router-link to="/services/food" @click="handleDropdownSelect">{{ t('nav.serviceFood') }}</router-link>
+          <router-link to="/services/financial" @click="handleDropdownSelect">{{ t('nav.serviceFinancial') }}</router-link>
+          <router-link to="/services/social" @click="handleDropdownSelect">{{ t('nav.serviceSocial') }}</router-link>
+          <router-link to="/services/home-visits" @click="handleDropdownSelect">{{ t('nav.serviceHomeVisits') }}</router-link>
+          <router-link to="/services/other" @click="handleDropdownSelect">{{ t('nav.serviceOther') }}</router-link>
         </div>
       </div>
 
@@ -32,9 +32,9 @@
           </svg>
         </router-link>
         <div class="dropdown-menu" v-show="activeDropdown === 'involved'">
-          <router-link to="/get-involved/volunteer" @click="closeMobileMenu">{{ t('nav.volunteer') }}</router-link>
-          <router-link to="/donate" @click="closeMobileMenu">{{ t('nav.donate') }}</router-link>
-          <router-link to="/get-involved/partner" @click="closeMobileMenu">{{ t('nav.partner') }}</router-link>
+          <router-link to="/get-involved/volunteer" @click="handleDropdownSelect">{{ t('nav.volunteer') }}</router-link>
+          <router-link to="/donate" @click="handleDropdownSelect">{{ t('nav.donate') }}</router-link>
+          <router-link to="/get-involved/partner" @click="handleDropdownSelect">{{ t('nav.partner') }}</router-link>
         </div>
       </div>
 
@@ -80,6 +80,11 @@ const openDropdown = (name) => {
 
 const closeDropdown = () => {
   activeDropdown.value = null;
+};
+
+const handleDropdownSelect = () => {
+  activeDropdown.value = null;
+  mobileMenuOpen.value = false;
 };
 </script>
 
