@@ -1,0 +1,51 @@
+/* Responsive CSS */
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .section {
+    padding: 2.5rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+}

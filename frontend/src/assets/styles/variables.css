@@ -1,0 +1,18 @@
+/* CSS Variables */
+:root {
+  --primary-green: #244B3A;
+  --dark-green: #153D2F;
+  --gold: #D6A85F;
+  --cream: #F8F5EE;
+  --white: #FFFFFF;
+  --dark-text: #334155;
+  --light-green: #E8F4F0;
+  --font-family: 'Segoe UI', 'Noto Sans Ethiopic', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Legacy variable mapping for compatibility */
+  --primary-color: #244B3A;
+  --secondary-color: #D6A85F;
+  --text-color: #334155;
+  --bg-color: #FFFFFF;
+  --border-color: #E0E0E0;
+}
