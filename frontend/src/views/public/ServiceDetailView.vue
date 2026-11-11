@@ -172,6 +172,162 @@
                 </article>
               </div>
             </div>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-column">
+              <!-- All 6 Services Switcher Menu -->
+              <nav class="content-card services-menu-card" :aria-label="ui.allServicesTitle">
+                <h2 class="sidebar-heading">{{ ui.allServicesTitle }}</h2>
+
+                <div class="service-links-list">
+                  <router-link
+                    v-for="item in allServiceLinks"
+                    :key="item.slug"
+                    :to="`/services/${item.slug}`"
+                    class="service-nav-pill"
+                    :class="{ 'is-active': item.slug === normalizedSlug }"
+                  >
+                    <span class="pill-title">{{ item.title }}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </router-link>
+                </div>
+              </nav>
+
+              <!-- Interactive Service Request Card -->
+              <div class="request-card">
+                <div class="request-header">
+                  <svg class="request-leaf" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+                    <path d="M98 12 C68 20, 42 44, 18 96 C62 78, 86 50, 98 12 Z" />
+                    <path d="M98 12 C66 44, 42 68, 18 96" />
+                  </svg>
+                  <div class="request-badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2>{{ ui.requestTitle }}</h2>
+                    <p>{{ ui.requestSubtitle }}</p>
+                  </div>
+                </div>
+
+                <form class="request-form" @submit.prevent="submitRequest">
+                  <div class="form-field">
+                    <label for="service-req-name">{{ ui.nameLabel }}</label>
+                    <input
+                      id="service-req-name"
+                      v-model.trim="form.name"
+                      type="text"
+                      :placeholder="ui.namePlaceholder"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="service-req-phone">{{ ui.phoneLabel }}</label>
+                    <input
+                      id="service-req-phone"
+                      v-model.trim="form.phone"
+                      type="tel"
+                      :placeholder="ui.phonePlaceholder"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="service-req-subcity">{{ ui.subcityLabel }}</label>
+                    <input
+                      id="service-req-subcity"
+                      v-model.trim="form.subcity"
+                      type="text"
+                      :placeholder="ui.subcityPlaceholder"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="service-req-notes">{{ ui.notesLabel }}</label>
+                    <textarea
+                      id="service-req-notes"
+                      v-model.trim="form.notes"
+                      rows="3"
+                      :placeholder="ui.notesPlaceholder"
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn-submit-request">
+                    <span>{{ ui.submitBtn }}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </button>
+
+                  <p v-if="requestSuccess" class="request-status" role="status">
+                    {{ requestSuccess }}
+                  </p>
+                </form>
+              </div>
+
+              <!-- Direct Help & Donate Card -->
+              <div class="help-card">
+                <h3>{{ ui.needHelpTitle }}</h3>
+                <p>{{ ui.needHelpDesc }}</p>
+                <div class="help-actions">
+                  <a href="tel:+251111234567" class="btn-call-desk">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z" />
+                    </svg>
+                    <span>{{ ui.callNow }}</span>
+                  </a>
+
+                  <router-link to="/donate" class="btn-donate-program">
+                    <span>{{ ui.supportBtn }}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </router-link>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Green CTA Banner -->
+      <section class="detail-cta-section">
+        <div class="container">
+          <div class="cta-banner">
+            <img src="/images/hero-banner.png" :alt="ui.ctaTitle" class="cta-bg-image" />
+            <div class="cta-overlay"></div>
+
+            <div class="cta-content">
+              <div class="cta-copy">
+                <div class="cta-overline-row">
+                  <span class="cta-line"></span>
+                  <span>{{ t('services.ctaOverline') }}</span>
+                </div>
+                <h2>{{ ui.ctaTitle }}</h2>
+                <p>{{ ui.ctaSubtitle }}</p>
+              </div>
+
+              <div class="cta-actions">
+                <router-link to="/donate" class="btn-cta-gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                  <span>{{ ui.ctaDonate }}</span>
+                </router-link>
+
+                <router-link to="/get-involved" class="btn-cta-outline">
+                  <span>{{ ui.ctaVolunteer }}</span>
+                </router-link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
