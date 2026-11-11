@@ -13,7 +13,7 @@
               </div>
             </div>
             <p class="footer-description">
-              በማህበረሰቡ ውስጥ ላሉ አረጋውያን የበለጠ ተሻለ ህይወት እንዲኖሩ እናግዛለን።
+              {{ t('footer.tagline') }}
             </p>
             <div class="social-links">
               <a href="#" aria-label="Facebook">📘</a>
@@ -25,41 +25,41 @@
           
           <!-- Quick Links -->
           <div class="footer-col">
-            <h3 class="footer-title">Quick Links</h3>
+            <h3 class="footer-title">{{ t('footer.quickLinks') }}</h3>
             <ul class="footer-links">
-              <li><router-link to="/">Home</router-link></li>
-              <li><router-link to="/about">About Us</router-link></li>
-              <li><router-link to="/services">Our Services</router-link></li>
-              <li><router-link to="/news-events">News & Events</router-link></li>
+              <li><router-link to="/">{{ t('nav.home') }}</router-link></li>
+              <li><router-link to="/about">{{ t('nav.about') }}</router-link></li>
+              <li><router-link to="/services">{{ t('nav.services') }}</router-link></li>
+              <li><router-link to="/news-events">{{ t('nav.newsEvents') }}</router-link></li>
             </ul>
           </div>
           
           <!-- Get Involved -->
           <div class="footer-col">
-            <h3 class="footer-title">Get Involved</h3>
+            <h3 class="footer-title">{{ t('footer.getInvolved') }}</h3>
             <ul class="footer-links">
-              <li><router-link to="/donate">Donate</router-link></li>
-              <li><router-link to="/get-involved">Volunteer</router-link></li>
-              <li><router-link to="/get-involved">Partner</router-link></li>
-              <li><router-link to="/gallery">Gallery</router-link></li>
+              <li><router-link to="/donate">{{ t('footer.donate') }}</router-link></li>
+              <li><router-link to="/get-involved">{{ t('footer.volunteer') }}</router-link></li>
+              <li><router-link to="/get-involved/partner">{{ t('footer.partner') }}</router-link></li>
+              <li><router-link to="/gallery">{{ t('footer.gallery') }}</router-link></li>
             </ul>
           </div>
           
           <!-- Contact Info -->
           <div class="footer-col">
-            <h3 class="footer-title">Contact Us</h3>
+            <h3 class="footer-title">{{ t('footer.contactUs') }}</h3>
             <div class="contact-info">
               <div class="contact-item">
                 <span class="icon">📍</span>
-                <span>Addis Ababa, Ethiopia</span>
+                <span>{{ t('common.location') }}</span>
               </div>
               <div class="contact-item">
                 <span class="icon">📞</span>
-                <span>+251 11 123 4567</span>
+                <span>{{ t('common.phone') }}</span>
               </div>
               <div class="contact-item">
                 <span class="icon">✉️</span>
-                <span>info@elderlysupport.et</span>
+                <span>{{ t('common.email') }}</span>
               </div>
             </div>
           </div>
@@ -70,11 +70,11 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="footer-bottom-content">
-          <p>&copy; 2024 Elderly Support Organization. All rights reserved.</p>
+          <p>&copy; 2024 {{ t('footer.copyright') }}</p>
           <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
+            <a href="#">{{ t('footer.privacy') }}</a>
             <span class="separator">|</span>
-            <a href="#">Terms of Service</a>
+            <a href="#">{{ t('footer.terms') }}</a>
           </div>
         </div>
       </div>
@@ -83,6 +83,9 @@
 </template>
 
 <script setup>
+import { useLanguage } from '../../composables/useLanguage';
+
+const { t } = useLanguage();
 </script>
 
 <style scoped>

@@ -19,17 +19,17 @@
               <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
               <path d="M3 4h8" />
             </svg>
-            <span>Together for a Dignified Life</span>
+            <span>{{ t('home.heroBadge') }}</span>
           </div>
 
           <h1 class="hero-title">
-            አረጋውያን ሕይወትን<br />
-            <span class="title-highlight">እናከብራለን</span>
+            {{ t('home.heroTitleLine1') }}<br />
+            <span class="title-highlight">{{ t('home.heroTitleHighlight') }}</span>
           </h1>
 
           <p class="hero-description">
-            የእኛ በጎ ፈቃደኛ አገልጋዮች በማህበረሰቡ ውስጥ<br />
-            ለአረጋውያን ድጋፍ እና እንክብካቤ በመስጠት ተስፋን ይዘራሉ።
+            {{ t('home.heroDescLine1') }}<br />
+            {{ t('home.heroDescLine2') }}
           </p>
 
           <div class="hero-buttons">
@@ -38,14 +38,14 @@
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-              ድጋፍ ይጠይቁ
+              {{ t('home.requestSupport') }}
             </router-link>
             <router-link to="/about" class="btn btn-secondary">
               <svg class="btn-svg" viewBox="0 0 24 24" fill="currentColor">
                 <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8" />
                 <polygon points="10,8 16,12 10,16" />
               </svg>
-              የእኛን ታሪክ ይወቁ
+              {{ t('home.knowOurStory') }}
             </router-link>
           </div>
         </div>
@@ -59,6 +59,9 @@
 </template>
 
 <script setup>
+import { useLanguage } from '../../composables/useLanguage';
+
+const { t } = useLanguage();
 </script>
 
 <style scoped>

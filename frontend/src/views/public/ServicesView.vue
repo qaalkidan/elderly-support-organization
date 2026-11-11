@@ -18,23 +18,23 @@
           <div class="hero-text">
             <div class="hero-overline-row">
               <span class="overline-line"></span>
-              <span class="overline-text">Our Services</span>
+              <span class="overline-text">{{ t('services.overline') }}</span>
               <span class="overline-line"></span>
             </div>
 
-            <h1 class="hero-title-am">የእኛ አገልግሎቶች</h1>
-            <div class="hero-title-en">Our Services</div>
-            <p class="hero-subtitle">Comprehensive support and care for our beloved elderly citizens.</p>
+            <h1 class="hero-title-am">{{ t('services.heroPrimary') }}</h1>
+            <div class="hero-title-en">{{ t('services.heroSecondary') }}</div>
+            <p class="hero-subtitle">{{ t('services.subtitle') }}</p>
 
             <nav class="hero-breadcrumb" aria-label="Breadcrumb">
               <router-link to="/" class="breadcrumb-home">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 3 3 10.5h2.5V20h5v-5.5h3V20h5v-9.5H21L12 3Z" />
                 </svg>
-                <span>Home</span>
+                <span>{{ t('common.home') }}</span>
               </router-link>
               <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-              <span class="breadcrumb-current">Our Services</span>
+              <span class="breadcrumb-current">{{ t('services.breadcrumbCurrent') }}</span>
             </nav>
           </div>
         </div>
@@ -53,12 +53,12 @@
           <div class="section-header">
             <div class="header-overline-row">
               <span class="header-line"></span>
-              <span class="header-overline">Our Services</span>
+              <span class="header-overline">{{ t('services.sectionOverline') }}</span>
               <span class="header-line"></span>
             </div>
-            <h2 class="section-title">የምንሰጣቸው አገልግሎቶች</h2>
+            <h2 class="section-title">{{ t('services.sectionTitle') }}</h2>
             <p class="section-subtitle">
-              We are committed to providing various services to support the well-being of elderly people.
+              {{ t('services.sectionSubtitle') }}
             </p>
           </div>
 
@@ -116,7 +116,7 @@
                 </div>
 
                 <router-link :to="service.link" class="learn-more-link">
-                  <span>Learn More</span>
+                  <span>{{ t('common.learnMore') }}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -132,7 +132,7 @@
       <section class="services-cta-section">
         <div class="container">
           <div class="cta-banner">
-            <img src="/images/hero-banner.png" alt="Support our elderly community" class="cta-bg-image" />
+            <img src="/images/hero-banner.png" :alt="t('services.ctaOverline')" class="cta-bg-image" />
             <div class="cta-overlay"></div>
 
             <svg class="cta-leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
@@ -144,20 +144,20 @@
               <div class="cta-left">
                 <div class="cta-overline-row">
                   <span class="cta-line"></span>
-                  <span class="cta-overline">Together for a Dignified Life</span>
+                  <span class="cta-overline">{{ t('services.ctaOverline') }}</span>
                 </div>
                 <h2 class="cta-title">
-                  Let's support our elderly community<br />
-                  for a better tomorrow.
+                  {{ t('services.ctaTitleLine1') }}<br />
+                  {{ t('services.ctaTitleLine2') }}
                 </h2>
-                <p class="cta-subtitle">Join us in making a difference.</p>
+                <p class="cta-subtitle">{{ t('services.ctaSubtitle') }}</p>
 
                 <div class="cta-buttons">
                   <router-link to="/donate" class="btn-cta-gold">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
-                    <span>Donate Now</span>
+                    <span>{{ t('services.ctaDonate') }}</span>
                   </router-link>
 
                   <router-link to="/get-involved" class="btn-cta-outline">
@@ -167,7 +167,7 @@
                       <circle cx="18" cy="9.5" r="2.2" />
                       <path d="M7.5 19v-2c0-2 2-3.6 4.5-3.6s4.5 1.6 4.5 3.6v2h-9Zm-5 0v-1.5c0-1.5 1.3-2.7 3-2.7.55 0 1.05.13 1.5.36-.55.75-.9 1.67-.9 2.64V19H2.5Zm16 0v-1.2c0-.97-.35-1.89-.9-2.64.45-.23.95-.36 1.5-.36 1.7 0 3 1.2 3 2.7V19h-3.6Z" />
                     </svg>
-                    <span>Volunteer</span>
+                    <span>{{ t('services.ctaVolunteer') }}</span>
                   </router-link>
                 </div>
               </div>
@@ -179,7 +179,7 @@
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   </div>
-                  <span>Support Elderly People</span>
+                  <span>{{ messages.services.highlights[0] }}</span>
                 </div>
 
                 <div class="highlight-item">
@@ -192,7 +192,7 @@
                       <path d="M3 4h8" />
                     </svg>
                   </div>
-                  <span>Build a Caring Community</span>
+                  <span>{{ messages.services.highlights[1] }}</span>
                 </div>
 
                 <div class="highlight-item">
@@ -201,7 +201,7 @@
                       <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   </div>
-                  <span>Create a More Inclusive Society</span>
+                  <span>{{ messages.services.highlights[2] }}</span>
                 </div>
               </div>
             </div>
@@ -213,50 +213,26 @@
 </template>
 
 <script setup>
-const services = [
-  {
-    key: 'healthcare',
-    title: 'Healthcare Support',
-    description: 'Access to basic healthcare services and medical assistance.',
-    image: '/images/service-healthcare.jpg',
-    link: '/services/healthcare'
-  },
-  {
-    key: 'food',
-    title: 'Food & Basic Needs',
-    description: 'Support with food and essential household items.',
-    image: '/images/service-food.jpg',
-    link: '/services/food'
-  },
-  {
-    key: 'financial',
-    title: 'Financial Assistance',
-    description: 'Financial support for those in need.',
-    image: '/images/service-financial.jpg',
-    link: '/services/financial'
-  },
-  {
-    key: 'social',
-    title: 'Psychological & Social Support',
-    description: 'Emotional support and companionship.',
-    image: '/images/service-social.jpg',
-    link: '/services/social'
-  },
-  {
-    key: 'home',
-    title: 'Home Visits',
-    description: 'Regular home visits for personal care and support.',
-    image: '/images/service-home-visits.jpg',
-    link: '/services/home-visits'
-  },
-  {
-    key: 'community',
-    title: 'Community Activities',
-    description: 'Social and recreational programs.',
-    image: '/images/home-events-community.png',
-    link: '/services/other'
-  }
-];
+import { computed } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, messages } = useLanguage();
+
+const serviceImages = {
+  healthcare: '/images/service-healthcare.jpg',
+  food: '/images/service-food.jpg',
+  financial: '/images/service-financial.jpg',
+  social: '/images/service-social.jpg',
+  home: '/images/service-home-visits.jpg',
+  community: '/images/home-events-community.png'
+};
+
+const services = computed(() =>
+  messages.value.services.cards.map((card) => ({
+    ...card,
+    image: serviceImages[card.key] || serviceImages.community
+  }))
+);
 </script>
 
 <style scoped>

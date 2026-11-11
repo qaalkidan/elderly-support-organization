@@ -17,22 +17,22 @@
           <div class="hero-text">
             <div class="hero-overline-row">
               <span class="overline-line"></span>
-              <span class="overline-text">About Us</span>
+              <span class="overline-text">{{ t('about.overline') }}</span>
               <span class="overline-line"></span>
             </div>
 
-            <h1 class="hero-title">አረጋውያን መርጃ ድርጅት</h1>
-            <p class="hero-subtitle">Caring Today, Supporting Tomorrow</p>
+            <h1 class="hero-title">{{ t('about.title') }}</h1>
+            <p class="hero-subtitle">{{ t('about.subtitle') }}</p>
 
             <nav class="hero-breadcrumb" aria-label="Breadcrumb">
               <router-link to="/" class="breadcrumb-home">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 3 3 10.5h2.5V20h5v-5.5h3V20h5v-9.5H21L12 3Z" />
                 </svg>
-                <span>Home</span>
+                <span>{{ t('common.home') }}</span>
               </router-link>
               <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-              <span class="breadcrumb-current">About Us</span>
+              <span class="breadcrumb-current">{{ t('about.breadcrumbCurrent') }}</span>
             </nav>
           </div>
         </div>
@@ -52,20 +52,20 @@
             <!-- Left: Our Story -->
             <div class="story-column">
               <div class="section-heading-row">
-                <h2 class="section-heading">Our Story</h2>
+                <h2 class="section-heading">{{ t('about.storyHeading') }}</h2>
                 <span class="heading-line"></span>
               </div>
 
               <p class="story-paragraph">
-                The <strong>አረጋውያን መርጃ ድርጅት</strong> (Elderly Support Organization) was established with a deep commitment to support and care for our beloved elderly citizens. We believe that every older person deserves dignity, respect, and a quality life. Our organization was founded in 2020 in Addis Ababa, Ethiopia, by a group of compassionate individuals who saw the need for better support and care for the elderly in our community.
+                {{ t('about.storyP1Prefix') }}<strong>{{ t('about.storyP1Brand') }}</strong>{{ t('about.storyP1Suffix') }}
               </p>
 
               <p class="story-paragraph">
-                Since then, we have been working tirelessly to provide assistance, promote active aging, and build a supportive community for our elderly.
+                {{ t('about.storyP2') }}
               </p>
 
               <router-link to="/services" class="btn-learn-more">
-                <span>Learn More</span>
+                <span>{{ t('common.learnMore') }}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -85,8 +85,8 @@
                   </svg>
                 </div>
                 <div class="mvv-text">
-                  <h3>Our Mission</h3>
-                  <p>To provide comprehensive support and care for elderly people, ensuring their dignity and well-being.</p>
+                  <h3>{{ t('about.missionTitle') }}</h3>
+                  <p>{{ t('about.missionDesc') }}</p>
                 </div>
               </div>
 
@@ -98,8 +98,8 @@
                   </svg>
                 </div>
                 <div class="mvv-text">
-                  <h3>Our Vision</h3>
-                  <p>An inclusive society where every elderly person lives with dignity, care, and happiness.</p>
+                  <h3>{{ t('about.visionTitle') }}</h3>
+                  <p>{{ t('about.visionDesc') }}</p>
                 </div>
               </div>
 
@@ -111,8 +111,8 @@
                   </svg>
                 </div>
                 <div class="mvv-text">
-                  <h3>Our Values</h3>
-                  <p>Compassion, Respect, Integrity, Solidarity, and Service.</p>
+                  <h3>{{ t('about.valuesTitle') }}</h3>
+                  <p>{{ t('about.valuesDesc') }}</p>
                 </div>
               </div>
             </div>
@@ -145,8 +145,8 @@
                 </svg>
               </div>
               <div class="stat-info">
-                <div class="stat-number">2,500+</div>
-                <div class="stat-label">Elderly People Supported</div>
+                <div class="stat-number">{{ stats[0].number }}</div>
+                <div class="stat-label">{{ stats[0].label }}</div>
               </div>
             </div>
 
@@ -161,8 +161,8 @@
                 </svg>
               </div>
               <div class="stat-info">
-                <div class="stat-number">800+</div>
-                <div class="stat-label">Volunteers</div>
+                <div class="stat-number">{{ stats[1].number }}</div>
+                <div class="stat-label">{{ stats[1].label }}</div>
               </div>
             </div>
 
@@ -173,8 +173,8 @@
                 </svg>
               </div>
               <div class="stat-info">
-                <div class="stat-number">300+</div>
-                <div class="stat-label">Donors &amp; Supporters</div>
+                <div class="stat-number">{{ stats[2].number }}</div>
+                <div class="stat-label">{{ stats[2].label }}</div>
               </div>
             </div>
 
@@ -189,8 +189,8 @@
                 </svg>
               </div>
               <div class="stat-info">
-                <div class="stat-number">5+</div>
-                <div class="stat-label">Years of Service</div>
+                <div class="stat-number">{{ stats[3].number }}</div>
+                <div class="stat-label">{{ stats[3].label }}</div>
               </div>
             </div>
           </div>
@@ -204,13 +204,13 @@
             <div class="team-intro">
               <div class="team-heading-row">
                 <span class="team-line"></span>
-                <h2 class="section-heading">Our Team</h2>
+                <h2 class="section-heading">{{ t('about.teamHeading') }}</h2>
               </div>
               <p class="team-description">
-                A dedicated team of professionals and volunteers working together to support our elderly community.
+                {{ t('about.teamDesc') }}
               </p>
               <router-link to="/get-involved" class="btn-meet-team">
-                <span>Meet Our Team</span>
+                <span>{{ t('about.meetTeamBtn') }}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -241,28 +241,12 @@
 </template>
 
 <script setup>
-const teamMembers = [
-  {
-    name: 'Selam Tesfaye',
-    role: 'Executive Director',
-    image: '/images/team-selam.jpg'
-  },
-  {
-    name: 'Daniel Mekonnen',
-    role: 'Program Manager',
-    image: '/images/team-daniel.jpg'
-  },
-  {
-    name: 'Asterakeb Girma',
-    role: 'Community Outreach',
-    image: '/images/team-aster.jpg'
-  },
-  {
-    name: 'Yonas Alemu',
-    role: 'Volunteer Coordinator',
-    image: '/images/team-yonas.jpg'
-  }
-];
+import { computed } from 'vue';
+import { useLanguage } from '../../composables/useLanguage';
+
+const { messages, t } = useLanguage();
+const stats = computed(() => messages.value.about.stats);
+const teamMembers = computed(() => messages.value.about.teamMembers);
 </script>
 
 <style scoped>

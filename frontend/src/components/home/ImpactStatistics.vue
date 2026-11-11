@@ -9,8 +9,8 @@
             </svg>
           </div>
           <div class="stat-content">
-            <div class="stat-number">2,500+</div>
-            <div class="stat-label">የተደገፉ አረጋውያን</div>
+            <div class="stat-number">{{ stats[0].number }}</div>
+            <div class="stat-label">{{ stats[0].label }}</div>
           </div>
         </div>
 
@@ -21,8 +21,8 @@
             </svg>
           </div>
           <div class="stat-content">
-            <div class="stat-number">800+</div>
-            <div class="stat-label">በሰላም የሚኖሩ</div>
+            <div class="stat-number">{{ stats[1].number }}</div>
+            <div class="stat-label">{{ stats[1].label }}</div>
           </div>
         </div>
 
@@ -37,8 +37,8 @@
             </svg>
           </div>
           <div class="stat-content">
-            <div class="stat-number">300+</div>
-            <div class="stat-label">አጋሮች</div>
+            <div class="stat-number">{{ stats[2].number }}</div>
+            <div class="stat-label">{{ stats[2].label }}</div>
           </div>
         </div>
 
@@ -53,8 +53,8 @@
             </svg>
           </div>
           <div class="stat-content">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">የተካሄዱ ክንውኖች</div>
+            <div class="stat-number">{{ stats[3].number }}</div>
+            <div class="stat-label">{{ stats[3].label }}</div>
           </div>
         </div>
       </div>
@@ -63,6 +63,11 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useLanguage } from '../../composables/useLanguage';
+
+const { messages } = useLanguage();
+const stats = computed(() => messages.value.home.stats);
 </script>
 
 <style scoped>

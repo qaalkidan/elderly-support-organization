@@ -17,23 +17,23 @@
           <div class="hero-text">
             <div class="hero-overline-row">
               <span class="overline-line"></span>
-              <span class="overline-text">News &amp; Events</span>
+              <span class="overline-text">{{ t('news.overline') }}</span>
               <span class="overline-line"></span>
             </div>
 
-            <h1 class="hero-title-am">ዜናና ዝግጅቶች</h1>
-            <div class="hero-title-en">News &amp; Events</div>
-            <p class="hero-subtitle">Stay updated with our latest news, events, and activities.</p>
+            <h1 class="hero-title-am">{{ t('news.heroPrimary') }}</h1>
+            <div class="hero-title-en">{{ t('news.heroSecondary') }}</div>
+            <p class="hero-subtitle">{{ t('news.subtitle') }}</p>
 
             <nav class="hero-breadcrumb" aria-label="Breadcrumb">
               <router-link to="/" class="breadcrumb-home">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 3 3 10.5h2.5V20h5v-5.5h3V20h5v-9.5H21L12 3Z" />
                 </svg>
-                <span>Home</span>
+                <span>{{ t('common.home') }}</span>
               </router-link>
               <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-              <span class="breadcrumb-current">News &amp; Events</span>
+              <span class="breadcrumb-current">{{ t('news.breadcrumbCurrent') }}</span>
             </nav>
           </div>
         </div>
@@ -54,10 +54,10 @@
               <div class="column-header">
                 <div class="column-title-group">
                   <span class="title-accent-bar"></span>
-                  <h2 class="column-title">Latest News</h2>
+                  <h2 class="column-title">{{ t('news.latestNews') }}</h2>
                 </div>
                 <button type="button" class="view-all-btn" @click="toggleShowAllNews">
-                  <span>{{ showAllNews ? 'Show Less' : 'View All News' }}</span>
+                  <span>{{ showAllNews ? t('news.showLess') : t('news.viewAllNews') }}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -86,7 +86,7 @@
                       <p class="news-excerpt">{{ item.excerpt }}</p>
                     </div>
                     <router-link :to="`/news/${item.id}`" class="read-more-link">
-                      <span>Read More</span>
+                      <span>{{ t('news.readMore') }}</span>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -108,10 +108,10 @@
                       <line x1="8" y1="2" x2="8" y2="6" />
                       <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
-                    <h2 class="events-panel-title">Upcoming Events</h2>
+                    <h2 class="events-panel-title">{{ t('news.upcomingEvents') }}</h2>
                   </div>
                   <button type="button" class="view-all-btn" @click="toggleShowAllEvents">
-                    <span>{{ showAllEvents ? 'Show Less' : 'View All Events' }}</span>
+                    <span>{{ showAllEvents ? t('news.showLess') : t('news.viewAllEvents') }}</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <polyline points="12 5 19 12 12 19" />
@@ -178,8 +178,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h2 class="newsletter-title">Let's Build a Caring Community Together</h2>
-                  <p class="newsletter-subtitle">Stay connected with our latest updates and events.</p>
+                  <h2 class="newsletter-title">{{ t('news.ctaTitle') }}</h2>
+                  <p class="newsletter-subtitle">{{ t('news.ctaSubtitle') }}</p>
                 </div>
               </div>
 
@@ -192,12 +192,12 @@
                   <input
                     v-model.trim="email"
                     type="email"
-                    placeholder="Enter your email address"
-                    aria-label="Email address"
+                    :placeholder="t('news.emailPlaceholder')"
+                    :aria-label="t('news.emailPlaceholder')"
                     required
                   />
                 </div>
-                <button type="submit" class="subscribe-btn">Subscribe</button>
+                <button type="submit" class="subscribe-btn">{{ t('news.subscribeBtn') }}</button>
               </form>
             </div>
 
@@ -213,84 +213,45 @@
 
 <script setup>
 import { computed, ref } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, messages } = useLanguage();
 
 const showAllNews = ref(false);
 const showAllEvents = ref(false);
 const email = ref('');
 const subscribeMessage = ref('');
 
-const newsItems = [
-  {
-    id: 1,
-    date: 'Nov 5, 2026',
-    title: 'Community Support Program Benefits Over 1,000 Elderly People',
-    excerpt: 'Our organization has successfully provided support to more than 1,000 elderly people across Addis Ababa this year...',
-    image: '/images/service-food.jpg'
-  },
-  {
-    id: 2,
-    date: 'Oct 28, 2026',
-    title: 'Free Health Checkup for Senior Citizens',
-    excerpt: 'In collaboration with local health partners, we organized a free health checkup program for elderly people...',
-    image: '/images/service-healthcare.jpg'
-  },
-  {
-    id: 3,
-    date: 'Oct 20, 2026',
-    title: 'Elderly Day Celebration A Success',
-    excerpt: 'Our annual elderly day celebration was a great success, bringing joy and togetherness for our beloved seniors...',
-    image: '/images/service-social.jpg'
-  },
-  {
-    id: 4,
-    date: 'Oct 10, 2026',
-    title: 'Monthly Food & Essentials Distribution Completed',
-    excerpt: 'Dedicated volunteers delivered nutritious food parcels and basic household supplies to over 350 senior households...',
-    image: '/images/service-home-visits.jpg'
-  }
-];
+const newsImages = {
+  1: '/images/service-food.jpg',
+  2: '/images/service-healthcare.jpg',
+  3: '/images/service-social.jpg',
+  4: '/images/service-home-visits.jpg'
+};
 
-const eventItems = [
-  {
-    id: 1,
-    month: 'NOV',
-    day: '15',
-    title: 'Health Awareness Workshop',
-    location: 'Addis Ababa Health Center',
-    time: '9:00 AM - 12:00 PM',
-    image: '/images/service-healthcare.jpg'
-  },
-  {
-    id: 2,
-    month: 'NOV',
-    day: '20',
-    title: 'Volunteer Training Session',
-    location: 'Our Organization Office',
-    time: '10:00 AM - 1:00 PM',
-    image: '/images/about-caregiver.jpg'
-  },
-  {
-    id: 3,
-    month: 'NOV',
-    day: '25',
-    title: 'Charity Fundraising Event',
-    location: 'Unity Park, Addis Ababa',
-    time: '8:00 AM - 5:00 PM',
-    image: '/images/service-financial.jpg'
-  },
-  {
-    id: 4,
-    month: 'DEC',
-    day: '04',
-    title: 'Community Elders Gathering',
-    location: 'Bole Community Hall',
-    time: '2:00 PM - 5:00 PM',
-    image: '/images/home-events-community.png'
-  }
-];
+const eventImages = {
+  1: '/images/service-healthcare.jpg',
+  2: '/images/about-caregiver.jpg',
+  3: '/images/service-financial.jpg',
+  4: '/images/home-events-community.png'
+};
 
-const displayedNews = computed(() => (showAllNews.value ? newsItems : newsItems.slice(0, 3)));
-const displayedEvents = computed(() => (showAllEvents.value ? eventItems : eventItems.slice(0, 3)));
+const newsItems = computed(() =>
+  messages.value.news.newsItems.map((item) => ({
+    ...item,
+    image: newsImages[item.id] || newsImages[1]
+  }))
+);
+
+const eventItems = computed(() =>
+  messages.value.news.eventItems.map((event) => ({
+    ...event,
+    image: eventImages[event.id] || eventImages[1]
+  }))
+);
+
+const displayedNews = computed(() => (showAllNews.value ? newsItems.value : newsItems.value.slice(0, 3)));
+const displayedEvents = computed(() => (showAllEvents.value ? eventItems.value : eventItems.value.slice(0, 3)));
 
 const toggleShowAllNews = () => {
   showAllNews.value = !showAllNews.value;
@@ -302,7 +263,7 @@ const toggleShowAllEvents = () => {
 
 const handleSubscribe = () => {
   if (!email.value) return;
-  subscribeMessage.value = `Thank you! Updates will be sent to ${email.value}.`;
+  subscribeMessage.value = t('news.subscribeSuccess', { email: email.value });
   email.value = '';
 };
 </script>

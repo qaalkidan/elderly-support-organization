@@ -3,27 +3,43 @@
     <article class="news-article">
       <img v-if="news.image" :src="news.image" :alt="news.title" />
       <h1>{{ news.title }}</h1>
-      <p class="news-meta">{{ formattedDate }}</p>
-      <div class="news-body" v-html="news.content"></div>
+      <p class="news-meta">{{ news.date }}</p>
+      <div class="news-body">
+        <p>{{ news.excerpt }}</p>
+      </div>
     </article>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { formatDate } from '../../utils/formatDate';
+import { useLanguage } from '@/composables/useLanguage';
 
 const route = useRoute();
-const news = ref({
-  id: route.params.id,
-  title: 'News Article Title',
-  content: '<p>Article content goes here...</p>',
-  date: new Date(),
-  image: ''
-});
+const { messages } = useLanguage();
 
-const formattedDate = computed(() => formatDate(news.value.date));
+const newsImages = {
+  1: '/images/service-food.jpg',
+  2: '/images/service-healthcare.jpg',
+  3: '/images/service-social.jpg',
+  4: '/images/service-home-visits.jpg'
+};
+
+const news = computed(() => {
+  const id = Number(route.params.id) || 1;
+  const matched =
+    messages.value.news.newsItems.find((item) => item.id === id) ||
+    messages.value.news.newsItems[0];
+
+  return {
+    id,
+    title: matched.title,
+    excerpt: matched.excerpt,
+    date: matched.date,
+    image: newsImages[matched.id] || newsImages[1]
+  };
+});
 </script>
 
 <style scoped>

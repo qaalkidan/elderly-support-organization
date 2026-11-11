@@ -1,50 +1,50 @@
 <template>
   <nav class="app-navbar">
     <div class="nav-links" :class="{ 'mobile-open': mobileMenuOpen }">
-      <router-link to="/" @click="closeMobileMenu" class="nav-link">Home</router-link>
-      <router-link to="/about" @click="closeMobileMenu" class="nav-link">About Us</router-link>
+      <router-link to="/" @click="closeMobileMenu" class="nav-link">{{ t('nav.home') }}</router-link>
+      <router-link to="/about" @click="closeMobileMenu" class="nav-link">{{ t('nav.about') }}</router-link>
 
       <div class="nav-dropdown" @mouseenter="openDropdown('services')" @mouseleave="closeDropdown">
         <router-link to="/services" class="nav-link" :class="{ 'is-active': route.path.startsWith('/services') }">
-          Our Services
+          {{ t('nav.services') }}
           <svg class="dropdown-chevron" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
           </svg>
         </router-link>
         <div class="dropdown-menu" v-show="activeDropdown === 'services'">
-          <router-link to="/services/healthcare" @click="closeMobileMenu">Healthcare Support</router-link>
-          <router-link to="/services/food" @click="closeMobileMenu">Food and Basic Needs</router-link>
-          <router-link to="/services/financial" @click="closeMobileMenu">Financial Assistance</router-link>
-          <router-link to="/services/social" @click="closeMobileMenu">Social Support</router-link>
-          <router-link to="/services/home-visits" @click="closeMobileMenu">Home Visits</router-link>
-          <router-link to="/services/other" @click="closeMobileMenu">Other Assistance</router-link>
+          <router-link to="/services/healthcare" @click="closeMobileMenu">{{ t('nav.serviceHealthcare') }}</router-link>
+          <router-link to="/services/food" @click="closeMobileMenu">{{ t('nav.serviceFood') }}</router-link>
+          <router-link to="/services/financial" @click="closeMobileMenu">{{ t('nav.serviceFinancial') }}</router-link>
+          <router-link to="/services/social" @click="closeMobileMenu">{{ t('nav.serviceSocial') }}</router-link>
+          <router-link to="/services/home-visits" @click="closeMobileMenu">{{ t('nav.serviceHomeVisits') }}</router-link>
+          <router-link to="/services/other" @click="closeMobileMenu">{{ t('nav.serviceOther') }}</router-link>
         </div>
       </div>
 
-      <router-link to="/news-events" @click="closeMobileMenu" class="nav-link">News & Events</router-link>
-      <router-link to="/gallery" @click="closeMobileMenu" class="nav-link">Gallery</router-link>
+      <router-link to="/news-events" @click="closeMobileMenu" class="nav-link">{{ t('nav.newsEvents') }}</router-link>
+      <router-link to="/gallery" @click="closeMobileMenu" class="nav-link">{{ t('nav.gallery') }}</router-link>
 
       <div class="nav-dropdown" @mouseenter="openDropdown('involved')" @mouseleave="closeDropdown">
         <router-link to="/get-involved" class="nav-link" :class="{ 'is-active': route.path.startsWith('/get-involved') }">
-          Get Involved
+          {{ t('nav.getInvolved') }}
           <svg class="dropdown-chevron" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
           </svg>
         </router-link>
         <div class="dropdown-menu" v-show="activeDropdown === 'involved'">
-          <router-link to="/get-involved/volunteer" @click="closeMobileMenu">Volunteer</router-link>
-          <router-link to="/donate" @click="closeMobileMenu">Donate</router-link>
-          <router-link to="/get-involved/partner" @click="closeMobileMenu">Partner With Us</router-link>
+          <router-link to="/get-involved/volunteer" @click="closeMobileMenu">{{ t('nav.volunteer') }}</router-link>
+          <router-link to="/donate" @click="closeMobileMenu">{{ t('nav.donate') }}</router-link>
+          <router-link to="/get-involved/partner" @click="closeMobileMenu">{{ t('nav.partner') }}</router-link>
         </div>
       </div>
 
-      <router-link to="/contact" @click="closeMobileMenu" class="nav-link">Contact Us</router-link>
+      <router-link to="/contact" @click="closeMobileMenu" class="nav-link">{{ t('nav.contact') }}</router-link>
 
       <router-link to="/donate" @click="closeMobileMenu" class="donate-btn">
         <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
         </svg>
-        Donate Now
+        {{ t('nav.donateNow') }}
       </router-link>
     </div>
 
@@ -59,7 +59,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useLanguage } from '../../composables/useLanguage';
 
+const { t } = useLanguage();
 const route = useRoute();
 const mobileMenuOpen = ref(false);
 const activeDropdown = ref(null);

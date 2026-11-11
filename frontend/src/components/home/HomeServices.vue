@@ -4,10 +4,10 @@
       <div class="section-header">
         <div class="header-overline-row">
           <span class="header-line"></span>
-          <span class="header-overline">OUR SERVICES</span>
+          <span class="header-overline">{{ t('home.servicesOverline') }}</span>
           <span class="header-line"></span>
         </div>
-        <h2 class="section-title">የእኛ አገልግሎቶች</h2>
+        <h2 class="section-title">{{ t('home.servicesTitle') }}</h2>
       </div>
 
       <div class="services-grid">
@@ -53,7 +53,7 @@
               <path d="M8 12h7m-3-3 3 3-3 3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
             </svg>
           </div>
-          <h3 class="service-title">{{ service.titleAm }}</h3>
+          <h3 class="service-title">{{ service.title }}</h3>
         </button>
       </div>
     </div>
@@ -61,19 +61,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useLanguage } from '../../composables/useLanguage';
 
 const router = useRouter();
+const { messages, t } = useLanguage();
 
-const services = ref([
-  { id: 1, key: 'healthcare', titleAm: 'የጤና ድጋፍ', link: '/services/healthcare' },
-  { id: 2, key: 'food', titleAm: 'ምግብ እና የዕለት እርዳታ', link: '/services/food' },
-  { id: 3, key: 'financial', titleAm: 'የገንዘብ ድጋፍ', link: '/services/financial' },
-  { id: 4, key: 'social', titleAm: 'ማህበራዊ ድጋፍ', link: '/services/social' },
-  { id: 5, key: 'home', titleAm: 'የቤት ጉብኝት', link: '/services/home-visits' },
-  { id: 6, key: 'other', titleAm: 'ሌሎች አገልግሎቶች', link: '/services/other' }
-]);
+const services = computed(() => messages.value.home.services);
 
 const navigateToService = (link) => {
   router.push(link);

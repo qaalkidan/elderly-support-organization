@@ -18,14 +18,14 @@
         </svg>
       </div>
 
-      <h2 class="cta-title">ድጋፍ ያድርጉ</h2>
+      <h2 class="cta-title">{{ t('home.ctaTitle') }}</h2>
 
       <p class="cta-description">
-        የእኛን ስራ ለመደገፍ ድጋፍ ያድርጉ
+        {{ t('home.ctaDesc') }}
       </p>
 
       <router-link to="/donate" class="btn-donate">
-        <span>አሁኑኑ ድጋፍ ያድርጉ</span>
+        <span>{{ t('home.ctaBtn') }}</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
@@ -36,6 +36,9 @@
 </template>
 
 <script setup>
+import { useLanguage } from '../../composables/useLanguage';
+
+const { t } = useLanguage();
 </script>
 
 <style scoped>

@@ -25,23 +25,23 @@
           <div class="hero-text">
             <div class="hero-overline-row">
               <span class="overline-line"></span>
-              <span class="overline-label">Get Involved</span>
+              <span class="overline-label">{{ t('getInvolved.overline') }}</span>
               <span class="overline-line"></span>
             </div>
-            <h1 class="hero-amharic">ተሳትፎ ያድርጉ</h1>
-            <h2 class="hero-title">Get Involved</h2>
+            <h1 class="hero-amharic">{{ t('getInvolved.heroPrimary') }}</h1>
+            <h2 class="hero-title">{{ t('getInvolved.heroSecondary') }}</h2>
             <p class="hero-subtitle">
-              Together, we can make a difference in the lives of elderly people.
+              {{ t('getInvolved.subtitle') }}
             </p>
             <nav class="breadcrumb-pill" aria-label="Breadcrumb">
               <router-link to="/" class="breadcrumb-home">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
                 </svg>
-                <span>Home</span>
+                <span>{{ t('common.home') }}</span>
               </router-link>
               <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-              <span class="breadcrumb-current">Get Involved</span>
+              <span class="breadcrumb-current">{{ t('getInvolved.breadcrumbCurrent') }}</span>
             </nav>
           </div>
         </div>
@@ -118,11 +118,11 @@
               <div class="feature-content">
                 <div class="feature-eyebrow">
                   <span class="eyebrow-line"></span>
-                  <span>Volunteer With Us</span>
+                  <span>{{ t('getInvolved.volunteerEyebrow') }}</span>
                 </div>
-                <h3 class="feature-heading">Make an Impact</h3>
+                <h3 class="feature-heading">{{ t('getInvolved.volunteerHeading') }}</h3>
                 <p class="feature-desc">
-                  Your time and skills can bring hope and happiness to the elderly in our community.
+                  {{ t('getInvolved.volunteerDesc') }}
                 </p>
 
                 <ul class="feature-bullets">
@@ -137,7 +137,7 @@
                 </ul>
 
                 <button type="button" class="btn-green-pill" @click="openActionModal('volunteer')">
-                  <span>Become a Volunteer</span>
+                  <span>{{ t('getInvolved.volunteerBtn') }}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -159,11 +159,11 @@
               <div class="feature-content">
                 <div class="feature-eyebrow">
                   <span class="eyebrow-line"></span>
-                  <span>Donate Today</span>
+                  <span>{{ t('getInvolved.donateEyebrow') }}</span>
                 </div>
-                <h3 class="feature-heading">Give Hope</h3>
+                <h3 class="feature-heading">{{ t('getInvolved.donateHeading') }}</h3>
                 <p class="feature-desc">
-                  Your donation helps us provide essential support, healthcare, and care for the elderly.
+                  {{ t('getInvolved.donateDesc') }}
                 </p>
 
                 <ul class="feature-bullets">
@@ -178,7 +178,7 @@
                 </ul>
 
                 <router-link to="/donate" class="btn-gold-pill">
-                  <span>Donate Now</span>
+                  <span>{{ t('getInvolved.donateBtn') }}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -250,13 +250,13 @@
                   </svg>
                 </div>
                 <div>
-                  <h2 class="cta-title">Together for a Dignified Life</h2>
-                  <p class="cta-subtitle">Let's build a caring and supportive community for our elderly.</p>
+                  <h2 class="cta-title">{{ t('getInvolved.ctaTitle') }}</h2>
+                  <p class="cta-subtitle">{{ t('getInvolved.ctaSubtitle') }}</p>
                 </div>
               </div>
 
               <button type="button" class="btn-cta-gold" @click="openActionModal('volunteer')">
-                <span>Get Involved Today</span>
+                <span>{{ t('getInvolved.ctaBtn') }}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -278,31 +278,31 @@
       @click.self="closeModal"
     >
       <div class="modal-card">
-        <button type="button" class="modal-close" aria-label="Close modal" @click="closeModal">&times;</button>
+        <button type="button" class="modal-close" :aria-label="t('common.close')" @click="closeModal">&times;</button>
         <span class="modal-tag">{{ modalConfig.eyebrow }}</span>
         <h3 class="modal-title">{{ modalConfig.heading }}</h3>
         <p class="modal-subtitle">{{ modalConfig.subtitle }}</p>
 
         <form v-if="!submittedMessage" class="modal-form" @submit.prevent="submitForm">
           <div class="form-row">
-            <label for="involved-name">Full Name</label>
+            <label for="involved-name">{{ t('getInvolved.modal.nameLabel') }}</label>
             <input id="involved-name" v-model.trim="form.name" type="text" required placeholder="Abebe Bikila" />
           </div>
           <div class="form-row">
-            <label for="involved-email">Email Address</label>
+            <label for="involved-email">{{ t('getInvolved.modal.emailLabel') }}</label>
             <input id="involved-email" v-model.trim="form.email" type="email" required placeholder="name@example.com" />
           </div>
           <div class="form-row">
-            <label for="involved-phone">Phone Number</label>
+            <label for="involved-phone">{{ t('getInvolved.modal.phoneLabel') }}</label>
             <input id="involved-phone" v-model.trim="form.phone" type="tel" required placeholder="+251 91 234 5678" />
           </div>
           <div class="form-row">
-            <label for="involved-notes">How would you like to help?</label>
+            <label for="involved-notes">{{ t('getInvolved.modal.notesLabel') }}</label>
             <textarea
               id="involved-notes"
               v-model.trim="form.notes"
               rows="3"
-              placeholder="Share your availability, area of interest, or partnership proposal..."
+              :placeholder="t('getInvolved.modal.notesPlaceholder')"
             ></textarea>
           </div>
           <button type="submit" class="modal-submit">{{ modalConfig.submitLabel }}</button>
@@ -310,7 +310,7 @@
 
         <div v-else class="modal-success" role="status">
           <p>{{ submittedMessage }}</p>
-          <button type="button" class="modal-submit" @click="closeModal">Done</button>
+          <button type="button" class="modal-submit" @click="closeModal">{{ t('common.done') }}</button>
         </div>
       </div>
     </div>
@@ -320,8 +320,10 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { useLanguage } from '@/composables/useLanguage';
 
 const route = useRoute();
+const { t, messages } = useLanguage();
 const activeModal = ref(null);
 const submittedMessage = ref('');
 const form = reactive({
@@ -331,82 +333,47 @@ const form = reactive({
   notes: ''
 });
 
-const involvementOptions = [
-  {
-    key: 'volunteer',
-    tone: 'green',
-    title: 'Volunteer',
-    description: 'Share your time and skills to help our elderly community.',
-    actionLabel: 'Join as Volunteer',
-    modalType: 'volunteer'
-  },
-  {
-    key: 'donate',
-    tone: 'gold',
-    title: 'Donate',
-    description: 'Support our mission through generous donations.',
-    actionLabel: 'Donate Now',
-    to: '/donate'
-  },
-  {
-    key: 'partner',
-    tone: 'green',
-    title: 'Partner With Us',
-    description: 'Collaborate with us to create greater impact.',
-    actionLabel: 'Become a Partner',
-    modalType: 'partner'
-  },
-  {
-    key: 'cause',
-    tone: 'gold',
-    title: 'Support Our Cause',
-    description: 'Spread awareness and help us reach more people.',
-    actionLabel: 'Get Involved',
-    modalType: 'cause'
-  }
-];
+const optionMeta = {
+  volunteer: { tone: 'green', modalType: 'volunteer' },
+  donate: { tone: 'gold', to: '/donate' },
+  partner: { tone: 'green', modalType: 'partner' },
+  cause: { tone: 'gold', modalType: 'cause' }
+};
 
-const volunteerBenefits = [
-  'Flexible opportunities',
-  'Meaningful work',
-  'A supportive community'
-];
+const involvementOptions = computed(() =>
+  messages.value.getInvolved.options.map((opt) => ({
+    ...opt,
+    ...(optionMeta[opt.key] || { tone: 'green', modalType: 'volunteer' })
+  }))
+);
 
-const donationBenefits = [
-  'Secure and easy donation',
-  'Multiple payment options',
-  'Transparent use of funds'
-];
-
-const impactStats = [
-  { value: '2,500+', label: 'Elderly People Supported' },
-  { value: '800+', label: 'Volunteers' },
-  { value: '300+', label: 'Donors & Supporters' },
-  { value: '5+', label: 'Years of Service' }
-];
+const volunteerBenefits = computed(() => messages.value.getInvolved.volunteerBullets);
+const donationBenefits = computed(() => messages.value.getInvolved.donateBullets);
+const impactStats = computed(() => messages.value.getInvolved.stats);
 
 const modalConfig = computed(() => {
+  const modal = messages.value.getInvolved.modal;
   if (activeModal.value === 'partner') {
     return {
-      eyebrow: 'Partnership Inquiry',
-      heading: 'Partner With Us',
-      subtitle: 'Tell us about your organization and how we can collaborate for elderly care.',
-      submitLabel: 'Submit Partnership Request'
+      eyebrow: modal.partnerEyebrow,
+      heading: modal.partnerHeading,
+      subtitle: modal.partnerSubtitle,
+      submitLabel: modal.partnerSubmit
     };
   }
   if (activeModal.value === 'cause') {
     return {
-      eyebrow: 'Community Outreach',
-      heading: 'Support Our Cause',
-      subtitle: 'Join our awareness network to advocate for elders across Ethiopia.',
-      submitLabel: 'Join Advocacy Network'
+      eyebrow: modal.causeEyebrow,
+      heading: modal.causeHeading,
+      subtitle: modal.causeSubtitle,
+      submitLabel: modal.causeSubmit
     };
   }
   return {
-    eyebrow: 'Volunteer Registration',
-    heading: 'Become a Volunteer',
-    subtitle: 'Join our dedicated team of volunteers supporting elders in Addis Ababa.',
-    submitLabel: 'Submit Volunteer Application'
+    eyebrow: modal.volunteerEyebrow,
+    heading: modal.volunteerHeading,
+    subtitle: modal.volunteerSubtitle,
+    submitLabel: modal.volunteerSubmit
   };
 });
 
@@ -421,13 +388,7 @@ const closeModal = () => {
 };
 
 const submitForm = () => {
-  const roleLabel =
-    activeModal.value === 'partner'
-      ? 'partnership inquiry'
-      : activeModal.value === 'cause'
-      ? 'outreach interest'
-      : 'volunteer application';
-  submittedMessage.value = `Thank you, ${form.name}. Your ${roleLabel} has been recorded and our coordinator will contact you shortly.`;
+  submittedMessage.value = t('getInvolved.modal.successTemplate', { name: form.name });
   form.name = '';
   form.email = '';
   form.phone = '';

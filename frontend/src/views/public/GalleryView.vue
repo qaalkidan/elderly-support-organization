@@ -18,23 +18,23 @@
           <div class="hero-text">
             <div class="hero-overline-row">
               <span class="overline-line"></span>
-              <span class="overline-text">Our Gallery</span>
+              <span class="overline-text">{{ t('gallery.overline') }}</span>
               <span class="overline-line"></span>
             </div>
 
-            <h1 class="hero-title-am">የእኛ ጋለሪ</h1>
-            <div class="hero-title-en">Our Gallery</div>
-            <p class="hero-subtitle">Capturing moments of care, compassion, and community.</p>
+            <h1 class="hero-title-am">{{ t('gallery.heroPrimary') }}</h1>
+            <div class="hero-title-en">{{ t('gallery.heroSecondary') }}</div>
+            <p class="hero-subtitle">{{ t('gallery.subtitle') }}</p>
 
             <nav class="hero-breadcrumb" aria-label="Breadcrumb">
               <router-link to="/" class="breadcrumb-home">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 3 3 10.5h2.5V20h5v-5.5h3V20h5v-9.5H21L12 3Z" />
                 </svg>
-                <span>Home</span>
+                <span>{{ t('common.home') }}</span>
               </router-link>
               <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
-              <span class="breadcrumb-current">Gallery</span>
+              <span class="breadcrumb-current">{{ t('gallery.breadcrumbCurrent') }}</span>
             </nav>
           </div>
         </div>
@@ -100,8 +100,8 @@
               <input
                 v-model.trim="searchQuery"
                 type="search"
-                placeholder="Search in gallery..."
-                aria-label="Search in gallery"
+                :placeholder="t('gallery.searchPlaceholder')"
+                :aria-label="t('gallery.searchPlaceholder')"
               />
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8" />
@@ -129,14 +129,14 @@
                 }"
               />
               <div class="tile-overlay">
-                <span class="tile-category">{{ item.category }}</span>
+                <span class="tile-category">{{ item.categoryLabel }}</span>
                 <span class="tile-title">{{ item.title }}</span>
               </div>
             </button>
           </div>
           <div v-else class="gallery-empty">
-            No photos match your filter.
-            <button type="button" class="reset-btn" @click="resetFilters">Show All Photos</button>
+            {{ t('gallery.emptyText') }}
+            <button type="button" class="reset-btn" @click="resetFilters">{{ t('gallery.resetBtn') }}</button>
           </div>
         </div>
       </section>
@@ -165,13 +165,13 @@
                   </svg>
                 </div>
                 <div>
-                  <h2 class="cta-title">Let's Support Our Elderly Community</h2>
-                  <p class="cta-subtitle">Together, we can make a difference in their lives.</p>
+                  <h2 class="cta-title">{{ t('gallery.ctaTitle') }}</h2>
+                  <p class="cta-subtitle">{{ t('gallery.ctaSubtitle') }}</p>
                 </div>
               </div>
 
               <router-link to="/donate" class="btn-donate">
-                <span>Donate Now</span>
+                <span>{{ t('gallery.ctaBtn') }}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -186,11 +186,11 @@
     <!-- Lightbox Modal -->
     <div v-if="selectedItem" class="lightbox-backdrop" @click.self="closeLightbox" role="dialog" aria-modal="true" :aria-label="selectedItem.title">
       <div class="lightbox-card">
-        <button type="button" class="lightbox-close" @click="closeLightbox" aria-label="Close photo preview">&times;</button>
+        <button type="button" class="lightbox-close" @click="closeLightbox" :aria-label="t('common.close')">&times;</button>
         <img :src="selectedItem.image" :alt="selectedItem.title" />
         <div class="lightbox-caption">
           <div>
-            <span class="lightbox-tag">{{ selectedItem.category }}</span>
+            <span class="lightbox-tag">{{ selectedItem.categoryLabel }}</span>
             <h3>{{ selectedItem.title }}</h3>
           </div>
           <div class="lightbox-nav">
@@ -205,87 +205,80 @@
 
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, messages } = useLanguage();
 
 const activeCategory = ref('all');
 const searchQuery = ref('');
-const selectedItem = ref(null);
+const selectedItemId = ref(null);
 
-const categories = [
-  { key: 'all', label: 'All Photos' },
-  { key: 'Activities', label: 'Activities' },
-  { key: 'Events', label: 'Events' },
-  { key: 'Community Support', label: 'Community Support' },
-  { key: 'Donations', label: 'Donations' },
-  { key: 'Volunteers', label: 'Volunteers' }
-];
+const categoryKeys = ['all', 'Activities', 'Events', 'Community Support', 'Donations', 'Volunteers'];
 
-const galleryItems = [
+const categories = computed(() =>
+  categoryKeys.map((key) => ({
+    key,
+    label: messages.value.gallery.categories[key] || key
+  }))
+);
+
+const rawGalleryItems = [
   {
     id: 1,
-    title: 'Smiling Elder in Community',
     category: 'Community Support',
     image: '/images/home-about-elderly-woman.png',
     position: 'center 25%'
   },
   {
     id: 2,
-    title: 'Volunteers Delivering Food Parcels',
     category: 'Donations',
     image: '/images/service-food.jpg',
     position: 'center 20%'
   },
   {
     id: 3,
-    title: 'Annual Elders Community Gathering',
     category: 'Events',
     image: '/images/home-events-community.png',
     position: 'center 42%'
   },
   {
     id: 4,
-    title: 'Compassionate Care & Companionship',
     category: 'Activities',
     image: '/images/service-social.jpg',
     position: 'center 30%'
   },
   {
     id: 5,
-    title: 'Volunteer Outreach Team',
     category: 'Volunteers',
     image: '/images/about-caregiver.jpg',
     position: 'center 20%'
   },
   {
     id: 6,
-    title: 'Home Visit & Personal Care',
     category: 'Volunteers',
     image: '/images/service-home-visits.jpg',
     position: 'center 20%'
   },
   {
     id: 7,
-    title: 'Dignified Living Together',
     category: 'Community Support',
     image: '/images/hero-banner.png',
     position: '72% 20%'
   },
   {
     id: 8,
-    title: 'Community Medical Checkup',
     category: 'Activities',
     image: '/images/service-healthcare.jpg',
     position: 'center 25%'
   },
   {
     id: 9,
-    title: 'Elder Support & Assistance',
     category: 'Donations',
     image: '/images/service-financial.jpg',
     position: 'center 20%'
   },
   {
     id: 10,
-    title: 'Elderly Day Celebration',
     category: 'Events',
     image: '/images/home-events-community.png',
     position: '72% 40%',
@@ -294,17 +287,30 @@ const galleryItems = [
   }
 ];
 
+const galleryItems = computed(() =>
+  rawGalleryItems.map((item) => ({
+    ...item,
+    title: messages.value.gallery.titles[item.id] || '',
+    categoryLabel: messages.value.gallery.categories[item.category] || item.category
+  }))
+);
+
 const filteredItems = computed(() => {
   const query = searchQuery.value.toLowerCase();
-  return galleryItems.filter((item) => {
+  return galleryItems.value.filter((item) => {
     const matchesCategory = activeCategory.value === 'all' || item.category === activeCategory.value;
     const matchesQuery =
       !query ||
       item.title.toLowerCase().includes(query) ||
+      item.categoryLabel.toLowerCase().includes(query) ||
       item.category.toLowerCase().includes(query);
     return matchesCategory && matchesQuery;
   });
 });
+
+const selectedItem = computed(() =>
+  selectedItemId.value ? galleryItems.value.find((i) => i.id === selectedItemId.value) || null : null
+);
 
 const resetFilters = () => {
   activeCategory.value = 'all';
@@ -312,18 +318,18 @@ const resetFilters = () => {
 };
 
 const openLightbox = (item) => {
-  selectedItem.value = item;
+  selectedItemId.value = item.id;
 };
 
 const closeLightbox = () => {
-  selectedItem.value = null;
+  selectedItemId.value = null;
 };
 
 const stepLightbox = (delta) => {
   if (!selectedItem.value || !filteredItems.value.length) return;
   const idx = filteredItems.value.findIndex((i) => i.id === selectedItem.value.id);
   const next = (idx + delta + filteredItems.value.length) % filteredItems.value.length;
-  selectedItem.value = filteredItems.value[next];
+  selectedItemId.value = filteredItems.value[next].id;
 };
 
 const handleKeydown = (e) => {

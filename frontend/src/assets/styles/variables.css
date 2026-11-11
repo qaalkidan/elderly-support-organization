@@ -7,6 +7,7 @@
   --white: #FFFFFF;
   --dark-text: #334155;
   --light-green: #E8F4F0;
+  --radius-pill: 9999px;
   --font-family: 'Segoe UI', 'Noto Sans Ethiopic', Tahoma, Geneva, Verdana, sans-serif;
   
   /* Legacy variable mapping for compatibility */
