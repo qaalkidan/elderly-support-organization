@@ -1,6 +1,6 @@
 <template>
   <nav class="breadcrumb">
-    <router-link to="/">Home</router-link>
+    <router-link to="/">{{ t('nav.home') }}</router-link>
     <span v-for="(crumb, index) in crumbs" :key="index">
       <span class="separator">/</span>
       <router-link v-if="crumb.to" :to="crumb.to">{{ crumb.label }}</router-link>
@@ -10,6 +10,10 @@
 </template>
 
 <script setup>
+import { useLanguage } from '../../composables/useLanguage';
+
+const { t } = useLanguage();
+
 defineProps({
   crumbs: {
     type: Array,
